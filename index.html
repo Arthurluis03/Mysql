@@ -1,28 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Teste Alunos</title>
 </head>
 <body>
-    <input id="nome" placeholder="nome">
-<input id="idade" placeholder="idade">
-<button onclick="enviar()">Enviar</button>
 
-<script>
-function enviar() {
-  const nome = document.getElementById("nome").value;
-  const idade = document.getElementById("idade").value;
+    <h1>Cadastrar Aluno</h1>
 
-  fetch("http://localhost:3000/alunos", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ nome, idade })
-  });
-}
-</script>
+    <form action="/aluno" method="POST">
+        <input type="text" name="nome" placeholder="Nome" />
+        <br><br>
+
+        <input type="number" name="idade" placeholder="Idade" />
+        <br><br>
+
+        <button type="submit">Enviar</button>
+    </form>
+
 </body>
 </html>

@@ -12,7 +12,12 @@ const app = {
 
     if (resposta.toLowerCase().trim() === "sim") {
       console.log("Adicionando na tabela...");
-      // aqui poderia guardar e mandar pro database.js e fazer o up
+      conexao.query(`INSERT INTO alunos (nome, idade) VALUES ("${nome}", ${idade})`, (erro, resultado) => {
+        if (erro) {
+          console.log("Erro ao adicionar aluno:", erro.message);
+          return;
+        }
+      });
       await app.mostrarTabela();
     } else {
       console.log("Nada será adicionado.");
@@ -36,7 +41,7 @@ const app = {
     });
   },
 
-  async deletarAlgo() { // tem q ser promise 
+  async deletarAlgo(id) { // tem q ser promise 
     return new Promise((resolve) => {
       conexao.query("DELETE FROM alunos WHERE id=3", (erro, resultado) => {
         if (erro) {
